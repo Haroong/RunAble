@@ -1,39 +1,40 @@
 import React from 'react';
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 const Weather = () => {
   const [city, setCity] = useState('');
-  let latitude;
-  let longitude;
-
-  const geoSuccess = (position) => {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude; 
-  }
-  const geoError = (err) => {
-      console.log(err);
-  }
-
-  const apiKey = process.env.API_KEY;
-  const apiUrl = `api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  const [temp, setTemp] = useState('');
   
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+  const handleGeoSuccess = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    getWeather(latitude, longitude);
+  }
+  const handleGeoError = (err) => {
+    console.log(err);
+  }
+  const getWeather = (lat, lon) => {
+    console.log(lat, lon);
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const apiKey = 'b6429e46f5ed953325e73dc989ca4827';
+    const apiUrl = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
-
-  useEffect(() => {
     fetch(apiUrl)
-      .then((res) => {
-        res.json()
+      .then(res => {
+        return res.json();
       })
-      .then((data) => {
-        console.log(data);
-      })
-    }, [apiUrl]);
+      .then(json => {
+        console.log(json);
+        setTemp(json.main.temp);
+        setCity(json.name);
+      });
+  }
 
+  navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+  
   return (
     <div>
-      this will be..{city}
+      {temp} @{city}
     </div>
   );
 }
