@@ -1,10 +1,10 @@
 import React from 'react';
-import { useEffect } from 'react';
 
-const Location = () => {
+const Location = ({name}) => {
+
   return (
     <div>
-      this will be .. location
+      @{name}
     </div>
   );
 };

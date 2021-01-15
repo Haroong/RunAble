@@ -8,13 +8,16 @@
     "dev": "webpack serve --env development"
   },
   "dependencies": {
+    "antd": "^4.10.2",
     "dotenv": "^8.2.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-icons": "^4.1.0",
     "react-refresh-webpack-plugin": "^0.1.0",
-    "react-transition-group": "^1.2.1"
+    "react-transition-group": "^1.2.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
