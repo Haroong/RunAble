@@ -8,6 +8,7 @@
     "dev": "webpack serve --env development"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.4.0",
     "antd": "^4.10.2",
     "dotenv": "^8.2.0",
     "jquery": "^3.5.1",

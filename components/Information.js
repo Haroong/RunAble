@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import SearchLocation from './SearchLocation';
 import Location from '../components/Location';
 import Weather from '../components/Weather';
 import Dust from '../components/Dust';
 
 const InformationWrapper = styled.div`
-  padding: 10px;
+  display: flex;
 `;
 
 const Information = () => {
@@ -40,13 +41,14 @@ const Information = () => {
         fetchData();
       });
     } else {
-      alert('사용자 위치 정보를 불러올 수 없습니다.');
+      alert('Cannot access location');
     }
   }, []);
 
   return (
     <InformationWrapper>
-      <Location name={city} />
+      <Location city={city} />
+      <SearchLocation />
       <Weather temp={temp} description={description} />
       <Dust />
     </InformationWrapper>

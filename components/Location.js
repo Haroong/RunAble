@@ -9,6 +9,7 @@ const LocationWrapper = styled.div`
   left: 3%;
   overflow-x: hidden;
   text-align: center;
+  color: white;
 `;
 
 const getDate = () => {
@@ -37,11 +38,11 @@ const getDate = () => {
   return today;
 };
 
-const Location = ({ name }) => {
+const Location = ({ city }) => {
   return (
     <>
       <LocationWrapper>
-        <h1>{name}</h1>
+        <h1>{city}</h1>
         <div>{getDate()}</div>
       </LocationWrapper>
     </>
