@@ -4,15 +4,16 @@ import styled from 'styled-components';
 const LocationWrapper = styled.div`
   height: 100%;
   width: 350px;
+  position: relative;
   z-index: 1;
-  top: 50%;
-  left: 3%;
+  top: 100px;
+  left: 2%;
   overflow-x: hidden;
   text-align: center;
   color: white;
 `;
 
-const getDate = () => {
+const getToday = () => {
   const now = new Date();
   const months = [
     'January',
@@ -40,12 +41,10 @@ const getDate = () => {
 
 const Location = ({ city }) => {
   return (
-    <>
-      <LocationWrapper>
-        <h1>{city}</h1>
-        <div>{getDate()}</div>
-      </LocationWrapper>
-    </>
+    <LocationWrapper>
+      <h1>{city}</h1>
+      <div>{getToday()}</div>
+    </LocationWrapper>
   );
 };
 

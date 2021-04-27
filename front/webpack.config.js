@@ -9,7 +9,10 @@ module.exports = {
     extensions: ['.js', '.jsx', '.scss'],
   },
   entry: {
-    app: './client',
+    app: './src/index.js',
+  },
+  node: {
+    fs: 'empty',
   },
   module: {
     rules: [
@@ -21,8 +24,9 @@ module.exports = {
             [
               '@babel/preset-env',
               {
-                targets: { browsers: ['last 2 chrome versions'] },
-                debug: true,
+                targets: {
+                  browsers: ['last 2 chrome versions'],
+                },
               },
             ],
             '@babel/preset-react',
@@ -34,16 +38,15 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
       },
     ],
   },
   plugins: [new ReactRefreshWebpackPlugin()],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'app.js',
-    publicPath: '/dist',
   },
   devServer: {
     publicPath: '/dist',
